@@ -12,7 +12,7 @@ function CheckHealthUrl {
    {
       $healthUrl = "$baseUrl/health"
       Write-Host "Checking Health Url: " $healthUrl
-      $response = Invoke-RestMethod -Uri $healthUrl;
+      $response = Invoke-RestMethod -Uri $healthUrl -TimeoutSec 30;
       Write-Host "Status code error: " $response.status_code;
       Write-Host $response.message;
       if ($response.status_code -ne 0)
@@ -38,7 +38,7 @@ function CheckSwaggerUrl {
    {
       $swaggerUrl = "$baseUrl/Swagger/v1/swagger.json"
       Write-Host "Checking Swagger Url $($swaggerUrl)"
-      $response = Invoke-RestMethod -Uri $swaggerUrl;
+      $response = Invoke-RestMethod -Uri $swaggerUrl -TimeoutSec 30;
       return 0;
    } catch {
       Write-Host "Error checking health: " $ApiUrl $_.Exception.Response.StatusCode.value__ ;
