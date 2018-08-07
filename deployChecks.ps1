@@ -12,7 +12,7 @@ function CheckHealthUrl {
 
    try
    {
-      $healthUrl = "$baseUrl/healthier"
+      $healthUrl = "$baseUrl/health"
       Write-Host "Checking Health Url: " $healthUrl
       $response = Invoke-RestMethod -Uri $healthUrl -TimeoutSec 30;
       Write-Host "Status code error: " $response.status_code;
